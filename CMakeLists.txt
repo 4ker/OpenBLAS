@@ -58,7 +58,7 @@ if (DEFINED SANITY_CHECK)
   list(APPEND BLASDIRS reference)
 endif ()
 
-set(SUBDIRS	${BLASDIRS})
+set(SUBDIRS ${BLASDIRS})
 if (NOT NO_LAPACK)
   list(APPEND SUBDIRS lapack)
 endif ()
@@ -169,7 +169,7 @@ add_subdirectory(ctest)
 endif()
 endif()
 
-set_target_properties(${OpenBLAS_LIBNAME} PROPERTIES 
+set_target_properties(${OpenBLAS_LIBNAME} PROPERTIES
   VERSION ${OpenBLAS_MAJOR_VERSION}.${OpenBLAS_MINOR_VERSION}
   SOVERSION ${OpenBLAS_MAJOR_VERSION}
 )
@@ -177,24 +177,26 @@ set_target_properties(${OpenBLAS_LIBNAME} PROPERTIES
 
 # TODO: Why is the config saved here? Is this necessary with CMake?
 #Save the config files for installation
-#	@cp Makefile.conf Makefile.conf_last
-#	@cp config.h config_last.h
+#   @cp Makefile.conf Makefile.conf_last
+#   @cp config.h config_last.h
 #ifdef QUAD_PRECISION
-#	@echo "#define QUAD_PRECISION">> config_last.h
+#   @echo "#define QUAD_PRECISION">> config_last.h
 #endif
 #ifeq ($(EXPRECISION), 1)
-#	@echo "#define EXPRECISION">> config_last.h
+#   @echo "#define EXPRECISION">> config_last.h
 #endif
 ###
 #ifeq ($(DYNAMIC_ARCH), 1)
-#	@$(MAKE) -C kernel commonlibs || exit 1
-#	@for d in $(DYNAMIC_CORE) ; \
-#	do  $(MAKE) GOTOBLAS_MAKEFILE= -C kernel TARGET_CORE=$$d kernel || exit 1 ;\
-#	done
-#	@echo DYNAMIC_ARCH=1 >> Makefile.conf_last
+#   @$(MAKE) -C kernel commonlibs || exit 1
+#   @for d in $(DYNAMIC_CORE) ; \
+#   do  $(MAKE) GOTOBLAS_MAKEFILE= -C kernel TARGET_CORE=$$d kernel || exit 1 ;\
+#   done
+#   @echo DYNAMIC_ARCH=1 >> Makefile.conf_last
 #endif
 #ifdef USE_THREAD
-#	@echo USE_THREAD=$(USE_THREAD) >>  Makefile.conf_last
+#   @echo USE_THREAD=$(USE_THREAD) >>  Makefile.conf_last
 #endif
-#	@touch lib.grd
+#   @touch lib.grd
 
+include_directories( ${CMAKE_SOURCE_DIR} )
+add_subdirectory( examples )

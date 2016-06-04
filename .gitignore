@@ -69,3 +69,4 @@ test/zblat3
 build
 build.*
 *.swp
+build/*
